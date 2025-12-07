@@ -1,0 +1,11 @@
+[16:30:15] [LOG] - Server is running on "http://127.0.0.1:3000"!
+[16:30:15] [ERROR] - Failed to connect to the MySQL database: Error: connect ECONNREFUSED 127.0.0.1:3307!
+[16:30:38] [LOG] - Server is running on "http://127.0.0.1:3000"!
+[16:30:38] [LOG] - Connected to the MySQL database successfully!
+[17:05:15] [ERROR] - Unhandled error: [object Object]!
+[17:08:04] [ERROR] - Unhandled error: [object Object]!
+[17:32:54] [LOG] - Server is running on "http://127.0.0.1:3000"!
+[17:32:54] [LOG] - Connected to the MySQL database successfully!
+[17:35:56] [LOG] - Server is running on "http://127.0.0.1:3000"!
+[17:35:56] [LOG] - Connected to the MySQL database successfully!
+[17:45:42] [ERROR] - Unhandled error: [object Object]!

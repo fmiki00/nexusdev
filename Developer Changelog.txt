@@ -1,0 +1,159 @@
+📦 NexusDev – Developer Changelog (Unreleased)
+
+
+
+🛠️ Dev Stage 1.0.0
+- Database design
+  - Users table: user_id, email_address, password, bio
+  - Request table: request_id, owner_id, email_address, message, color_palette, thematic, logo_url
+- Backend
+  - Initial server setup
+  - API endpoints: POST /register, POST /login, POST /send-request, POST /revoke-request
+  - API testing completed
+- Frontend
+  - Basic index.html structure
+  - CSS styling
+  - JavaScript: fetch logic for APIs, data processing and testing
+
+
+
+🛠️ Dev Stage 1.0.1
+- Database
+  - Renamed Request table → Order
+  - Renamed owner_id → user_id
+  - Removed email_address field
+- Backend/Frontend
+  - Updated logic to reflect new table and field names
+- Profile update feature
+  - Backend: GET /get-profile, POST /update-profile
+  - Frontend: UI components and styling, fetch logic for new APIs
+
+
+
+🛠️ Dev Stage 1.1.0
+- Dashboard implementation
+  - Users table: added owner_privileges (tinyint)
+  - Conditional redirect to /dashboard
+  - Dashboard removed from web, moved to desktop app
+- Desktop app
+  - Order class created
+  - UI: left panel (order list + search + refresh), right panel (order details)
+  - Search engine: by order_id or email
+  - Refresh logic implemented
+
+
+
+🛠️ Dev Stage 1.2.0
+- Assets
+  - New icon (ChatGPT-generated)
+  - All images moved to Images/ folder
+- Login panel
+  - Frontend: email/password inputs, unified styling
+  - Backend: input validation, user existence and password check, error/success handling, switch to DashboardGrid on success
+- Taskbar notifications
+  - WPF NotifyIcon setup, balloon messages, exit confirmation
+- Database
+  - SQL file fixed and populated
+  - user_id relations between orders and users
+- Web frontend
+  - New logo added
+- Desktop app
+  - Auto-refresh orders list
+  - Windows notification on new order
+  - UI thread issues fixed (Dispatcher.Invoke)
+  - Awaited delay to prevent spam
+
+
+
+🛠️ Dev Stage 1.2.1
+- Desktop app
+  - Added delete button and logic for orders
+  - UI layout fixes
+
+
+
+🛠️ Dev Stage 1.3.0
+- Database
+  - bio and owner_privileges fields now have default values
+  - Users table: added birth_date and phone_number
+- Backend
+  - Global error handling
+  - Session stores only record ID
+  - /register: now requires phone and birth date
+  - /login: removed password regex check
+  - /getProfile and /updateProfile: now include phone and birth date
+  - Password update skipped if field is empty
+- Frontend
+  - Registration, profile view/edit updated to handle new fields
+  - Refactored JavaScript
+- Bug fixes
+  - Session ID conflict with Express (req.session.id)
+  - Order sending failed due to same issue
+
+
+
+🛠️ Dev Stage 1.3.1
+- Bug fixes
+  - Orders not detected after re-login
+  - Invalid phone number input during profile edit
+
+
+
+🛠️ Dev Stage 1.4.0
+- Frontend Migration
+  - Full transition to React
+  - Legacy web features re-implemented
+- Backend
+  - Removed http package from server.js
+  - Installed cors
+  - Optimized for single backend server
+  - Detailed debugging
+  - Bug fixes
+    - Profile update and logout issues
+    - uid not stored correctly, causing profile access issues
+
+
+
+🛠️ Dev Stage 1.5.0
+- Database (Zsolt Simó)
+  - Importing errors fixed
+  - Comment which code what does
+  - "orders" table
+    - "thematic" changed from "VARCHAR" to "INT"
+    - "color_palette" removed
+  - New table: "images"
+    - "image_id" to identify image
+    - "order_id" to identify wich order connected to this image
+    - "image_data" to store image
+    - Connect with "orders" table using "order_id"
+  - New table: "messages"
+    - "message_id" to identify message
+    - "order_id" to identify wich order connected to this message
+    - "user_id" to identify wich user connected to this message
+    - "content" to store message contentű
+    - "timestamp" to store when this message sent
+- Backend (Zsolt Simó)
+  - Optimize backend clarity
+    - Creating separate functions for reused code
+    - Advanced logging system
+      - Console and file logging with date and log type included (wich includes a custom log script)
+    - Notes implemented in the code
+  - Bug fixes
+    - The server forgot the user's login status after each refresh
+
+🛠️ Dev Stage 1.6.0
+-Database (Medgyes Vendel)
+ - Edited table "orders"
+ Added new records
+  - "os"
+  - "platform"
+  - "nev"
+  - "templates"
+  - "color_kod1"
+  - "color_kod2"
+  - "date"
+  - "wcp"
+ -New Table "dokuments"
+ - "document_id"
+ - "order_id"
+ - "document_data"

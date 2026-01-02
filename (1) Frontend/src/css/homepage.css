@@ -1,0 +1,151 @@
+/* Hero szekció */
+.hero-section {
+  text-align: center;
+  padding: 60px 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.hero-section h1 {
+  font-family: "Orbitron", sans-serif;
+  font-size: 48px;
+  font-weight: bold;
+  color: var(--fo-szin);
+  margin-bottom: 20px;
+}
+
+.hero-section .subtitle {
+  font-size: 20px;
+  color: #c0c0c0;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+/* Rolunk szekció */
+.about-section {
+  padding: 60px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-family: "Orbitron", sans-serif;
+  font-size: 36px;
+  text-align: center;
+  margin-bottom: 40px;
+  color: var(--fo-szin);
+  text-transform: uppercase;
+}
+
+.about-content {
+  background-color: var(--kartya-szin);
+  border: 1px solid var(--fo-szin);
+  border-radius: 15px;
+  padding: 40px;
+  line-height: 1.8;
+  font-size: 18px;
+  text-align: center;
+}
+
+.about-content p {
+  margin-bottom: 20px;
+}
+
+.about-content p:last-child {
+  margin-bottom: 0;
+}
+
+/* Csapat szekció */
+.team-section {
+  padding: 60px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.team-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.team-card {
+  background-color: var(--kartya-szin);
+  border: 1px solid var(--fo-szin);
+  border-radius: 15px;
+  padding: 30px;
+  text-align: center;
+  width: 300px;
+}
+
+.team-card:hover {
+  border-color: #4dd5ff;
+}
+
+.team-card-image {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin: 0 auto 20px;
+  background-color: var(--fo-szin);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid var(--fo-szin);
+  overflow: hidden;
+}
+
+.team-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.team-card-image svg {
+  width: 60px;
+  height: 60px;
+  fill: white;
+}
+
+.team-card h3 {
+  font-family: "Orbitron", sans-serif;
+  font-size: 20px;
+  color: var(--fo-szin);
+  margin-bottom: 8px;
+}
+
+.team-card .role {
+  font-size: 14px;
+  color: #4dd5ff;
+  margin-bottom: 15px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.team-card .bio {
+  font-size: 16px;
+  color: #c0c0c0;
+  line-height: 1.5;
+}
+
+/* Mobil nezet */
+@media (max-width: 768px) {
+  .hero-section h1 {
+    font-size: 32px;
+  }
+
+  .hero-section .subtitle {
+    font-size: 16px;
+  }
+
+  .team-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .team-card {
+    width: 100%;
+    max-width: 350px;
+  }
+}

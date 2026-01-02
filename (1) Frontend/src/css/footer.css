@@ -1,0 +1,18 @@
+/* Footer */
+footer {
+  background-color: #0a0a0f;
+  border-top: 2px solid var(--fo-szin);
+  padding: 30px;
+  text-align: center;
+  margin-top: 50px;
+}
+
+footer p {
+  color: #a0a0a0;
+  font-size: 16px;
+}
+
+footer span {
+  color: var(--fo-szin);
+  font-weight: bold;
+}

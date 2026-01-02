@@ -1,0 +1,81 @@
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background-color: #0a0a0f;
+  border-bottom: 2px solid var(--fo-szin);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+/* Logo */
+.navbar-brand {
+  font-family: "Orbitron", sans-serif;
+  font-size: 28px;
+  font-weight: bold;
+  color: var(--fo-szin);
+  cursor: pointer;
+}
+
+.navbar-brand:hover {
+  color: #4dd5ff;
+}
+
+/* Navigacios linkek */
+.navbar-nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-link {
+  font-size: 18px;
+  color: var(--szoveg-szin);
+  text-decoration: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+}
+
+.nav-link:hover {
+  color: var(--fo-szin);
+  background-color: rgba(5, 247, 25, 0.1);
+}
+
+/* Profil ikon */
+.profile-icon {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background-color: var(--fo-szin);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: 2px solid var(--fo-szin);
+}
+
+.profile-icon:hover {
+  background-color: #04c914;
+}
+
+.profile-icon svg {
+  width: 24px;
+  height: 24px;
+  fill: white;
+}
+
+/* Mobil nezet */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 10px 15px;
+  }
+
+  .navbar-brand {
+    font-size: 20px;
+  }
+}

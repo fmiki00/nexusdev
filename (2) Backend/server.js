@@ -9,10 +9,10 @@ const app = express();
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors(settings.SV_CORS));
-app.use((error, response) =>
+app.use((error, req, res, next) =>
 {
     debug.error(`Unhandled error: ${error}!`);
-    response.status(500).json({ error: true, message: `Internal server error: ${error}!` });
+    res.status(500).json({ error: true, message: "Internal server error!" });
 });
 
 
@@ -67,9 +67,9 @@ function validateEmailAddress(emailAddress)
 
 
     // Check email format //
-    const emailAddressRegex = !/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const emailAddressRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    if (emailAddressRegex.test(emailAddress))
+    if (!emailAddressRegex.test(emailAddress))
     {
         return "Invalid email address!";
     }
@@ -115,9 +115,9 @@ function validatePhoneNumber(phoneNumber)
 
 
     // Check phone number format //
-    const phoneNumberRegex = !/^\+?[1-9]\d{1,14}$/;
+    const phoneNumberRegex = /^\+?[1-9]\d{1,14}$/;
 
-    if (phoneNumberRegex.test(phoneNumber))
+    if (!phoneNumberRegex.test(phoneNumber))
     {
         return "Invalid phone number!";
     }
@@ -194,6 +194,8 @@ function validatePassword(password)
     {
         return "Password must be at least 8 characters long, include an uppercase letter, a lowercase letter, a number, and a special character!";
     }
+
+    return "";
 }
 
 function validateBio(bio)
@@ -290,7 +292,7 @@ app.post("/register", (req, res) =>
 
 
     // Database querry //
-    let query = "INSERT INTO users (email_address, phone_number, birth_date, username, password) VALUES (?, ?, ?, ?)";
+    let query = "INSERT INTO users (email_address, phone_number, birthdate, username, password) VALUES (?, ?, ?, ?, ?)";
 
     db.query(query, [emailAddress, phoneNumber, birthDate, username, password], (error, result) =>
     {
@@ -450,7 +452,7 @@ app.post("/updateProfile", (req, res) =>
             }
 
             // Update database //
-            db.query("UPDATE users SET email_address = ?, phone_number = ?, birth_date = ?, username = ?, bio = ?, password = ? WHERE user_id = ?", [emailAddress, phoneNumber, birthDate, username, bio, password, userId], (error2, results2) =>
+            db.query("UPDATE users SET email_address = ?, phone_number = ?, birthdate = ?, username = ?, bio = ?, password = ? WHERE user_id = ?", [emailAddress, phoneNumber, birthDate, username, bio, password, userId], (error2, results2) =>
             {
                 // Handle errors //
                 if (error2)
@@ -474,7 +476,7 @@ app.post("/updateProfile", (req, res) =>
         else
         {
             // Update database without password //
-            db.query("UPDATE users SET email_address = ?, phone_number = ?, birth_date = ?, username = ?, bio = ? WHERE user_id = ?", [emailAddress, phoneNumber, birthDate, username, bio, userId], (error2, results2) =>
+            db.query("UPDATE users SET email_address = ?, phone_number = ?, birthdate = ?, username = ?, bio = ? WHERE user_id = ?", [emailAddress, phoneNumber, birthDate, username, bio, userId], (error2, results2) =>
             {
                 // Handle errors //
                 if (error2)

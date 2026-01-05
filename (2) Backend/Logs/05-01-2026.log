@@ -3,3 +3,5 @@
 [09:09:11] [LOG] - User registered successfully with email: farmik171@hengersor.hu!
 [09:09:16] [LOG] - User 1 logged in successfully without an active order!
 [09:09:32] [LOG] - User 1 logged in successfully without an active order!
+[17:38:00] [LOG] - Server is running on "http://127.0.0.1:3000"!
+[17:38:00] [LOG] - Connected to the MySQL database successfully!

@@ -1,63 +1,61 @@
-import miki1 from "../images/miki1.jfif";
-import vendel from "../images/vendel.jfif";
+import miki1 from "../images/miki1.jfif"; 
+import vendel from "../images/vendel.jfif"; 
 
-function AboutPage() {
-    const teamMembers = [
+function AboutPage() { 
+    const teamMembers = [ // Csapat tagok tömb konstans deklarációja
         {
-            name: "Simo Zsolt",
+            name: "Simo Zsolt", 
             role: "Nexusdev director & Backend Developer",
             bio: "Tobb eves tapasztalattal rendelkezik webes alkalmazasok fejleszteseben."
         },
         {
-            image: miki1,
-            name: "Farkas Miklos",
+            image: miki1, 
+            name: "Farkas Miklos", 
             role: "Nexusdev director & Frontend Developer",
             bio: "Kreativ tervezo, aki felhasznalobaratfelületeket alkot."
         },
         {
-            image: vendel,
-            name: "Medgyes Vendel",
+            image: vendel, 
+            name: "Medgyes Vendel", 
             role: "Nexusdev director & Database Specialist",
-            bio: "Adatbazisok es szerveroldali megoldasok szakertoje."
+            bio: "Adatbazisok es szerveroldali megoldasok szakertoje." 
         }
     ];
 
-    return (
+    return ( 
         <>
-            {/* Rolunk resz */}
-            <section className="about-section">
-                <h2 className="section-title">Kik Vagyunk?</h2>
-                <div className="about-content">
-                    <p>
-                        A <strong>NexusDev</strong> egy fiatal webfejleszto csapat, 
-                        amely 2024-ben alakult azzal a cellal, hogy egyedi es modern digitalis 
-                        megoldasokat nyujtson vallalkozasok szamara.
+            {/* Rolunk resz */} 
+            <section className="about-section"> {/* Szakasz elem az about-section osztállyal */}
+                <h2 className="section-title">Kik Vagyunk?</h2> {/* Cím a szakaszhoz */}
+                <div className="about-content"> {/* Tartalom div az about-content osztállyal */}
+                    <p> 
+                        A <strong>NexusDev</strong> egy fiatal webfejleszto csapat,  {/* Szöveg a cégről */}
+                        amely 2024-ben alakult azzal a cellal, hogy egyedi es modern digitalis  {/* Folytatás */}
+                        megoldasokat nyujtson vallalkozasok szamara. {/* Folytatás */}
                     </p>
-                    <p>
-                        Kuldetesunk, hogy ugyfeleink otleteit eletre keltsuk, es olyan weboldalakat, 
-                        alkalmazasokat hozzunk letre, amelyek nem csak szepek, de hatekonyak is.
+                    <p> {/* Második bekezdés */}
+                        Kuldetesunk, hogy ugyfeleink otleteit eletre keltsuk, es olyan weboldalakat,  {/* Küldetés szöveg */}
+                        alkalmazasokat hozzunk letre, amelyek nem csak szepek, de hatekonyak is. {/* Folytatás */}
                     </p>
                 </div>
             </section>
 
-            {/* Csapat resz */}
-            <section className="team-section">
-                <h2 className="section-title">Csapatunk</h2>
-                <div className="team-grid">
-                    {teamMembers.map((member, index) => (
-                        <div key={index} className="team-card">
-                            <div className="team-card-image">
-                                {member.image ? (
-                                    <img src={member.image} alt={member.name} />
-                                ) : (
-                                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-                                    </svg>
+            {/* Csapat resz */} 
+            <section className="team-section"> {/* Szakasz elem a team-section osztállyal */}
+                <h2 className="section-title">Csapatunk</h2> {/* Cím a csapat szakaszhoz */}
+                <div className="team-grid"> {/* Grid div a csapat tagokhoz */}
+                    {teamMembers.map((member, index) => ( // Csapat tagok map-olása
+                        <div key={index} className="team-card"> 
+                            <div className="team-card-image"> 
+                                {member.image ? ( // Feltétel, ha van kép
+                                    <img src={member.image} alt={member.name} /> // Kép elem
+                                ) : ( // Egyébként
+                                    <div className="placeholder-image">No Image</div> // Placeholder szöveg
                                 )}
                             </div>
-                            <h3>{member.name}</h3>
-                            <p className="role">{member.role}</p>
-                            <p className="bio">{member.bio}</p>
+                            <h3>{member.name}</h3> {/* Név cím */}
+                            <p className="role">{member.role}</p> {/* Szerep bekezdés */}
+                            <p className="bio">{member.bio}</p> {/* Bio bekezdés */}
                         </div>
                     ))}
                 </div>

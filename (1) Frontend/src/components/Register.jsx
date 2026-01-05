@@ -1,69 +1,69 @@
-import { useState } from "react";
+import { useState } from "react"; 
 
-function Register({ onSuccess }) {
-    const [email, setEmail] = useState("");
-    const [phone, setPhone] = useState("");
-    const [birthDate, setBirthDate] = useState("");
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
+function Register({ onSuccess }) { // Register komponens függvény deklarációja, propszal: onSuccess (sikeres regisztráció callback)
+    const [email, setEmail] = useState(""); // Email állapot és setter hook használata, kezdeti érték üres string
+    const [phone, setPhone] = useState(""); // Telefonszám állapot és setter hook használata, 
+    const [birthDate, setBirthDate] = useState(""); // Születési dátum állapot és setter hook használata, 
+    const [username, setUsername] = useState(""); // Felhasználónév állapot és setter hook használata,
+    const [password, setPassword] = useState(""); // Jelszó állapot és setter hook használata, 
 
-    function handleSubmit(e) {
-        e.preventDefault();
+    function handleSubmit(e) { // Form beküldés kezelő függvény
+        e.preventDefault(); // Alapértelmezett form viselkedés megakadályozása
         
-        fetch("http://127.0.0.1:3000/register", {
-            method: "POST",
-            credentials: "include",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ 
-                emailAddress: email, 
-                phoneNumber: phone, 
-                birthDate: birthDate, 
+        fetch("http://127.0.0.1:3000/register", { // Fetch kérés küldése a backend register végpontra
+            method: "POST", // HTTP metódus POST
+            credentials: "include", // Cookie-k küldése a kéréssel
+            headers: { "Content-Type": "application/json" }, // Fejléc JSON tartalomtípusra
+            body: JSON.stringify({  // Kérés törzse JSON formátumban
+                emailAddress: email,  
+                phoneNumber: phone,  
+                birthDate: birthDate,  
                 username: username, 
-                password: password 
+                password: password  
             })
         })
-        .then(response => response.json())
-        .then(data => {
-            alert(data.message);
-            if (!data.error) {
-                onSuccess();
+        .then(response => response.json()) // Válasz JSON formátumba alakítása
+        .then(data => { // Adatok feldolgozása
+            alert(data.message); // Üzenet megjelenítése a válaszból
+            if (!data.error) { // Ha nincs hiba
+                onSuccess(); // onSuccess callback hívása
             }
         })
-        .catch(error => console.error("Error:", error));
+        .catch(error => console.error("Error:", error)); // Hiba esetén konzolra írás
     }
 
-    return (
-        <form className="auth-form" onSubmit={handleSubmit}>
-            <input 
-                type="email" 
+    return ( 
+        <form className="auth-form" onSubmit={handleSubmit}> 
+            <input  // Email input mező
+                type="email"  
                 placeholder="Email address here..." 
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                value={email} // Érték az email állapotból
+                onChange={(e) => setEmail(e.target.value)} // onChange eseménykezelő az email frissítéséhez
             />
-            <input 
-                type="tel" 
-                placeholder="Phone number here..." 
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
+            <input  // Telefonszám input mező
+                type="tel"  
+                placeholder="Phone number here..."  
+                value={phone} // Érték a phone állapotból
+                onChange={(e) => setPhone(e.target.value)} // onChange eseménykezelő a telefonszám frissítéséhez
             />
-            <input 
+            <input  // Születési dátum input mező
                 type="date" 
-                value={birthDate}
-                onChange={(e) => setBirthDate(e.target.value)}
+                value={birthDate} // Érték a birthDate állapotból
+                onChange={(e) => setBirthDate(e.target.value)} // onChange eseménykezelő a születési dátum frissítéséhez
             />
-            <input 
+            <input  // Felhasználónév input mező
                 type="text" 
                 placeholder="Username here..." 
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
+                value={username} // Érték az username állapotból
+                onChange={(e) => setUsername(e.target.value)} // onChange eseménykezelő a felhasználónév frissítéséhez
             />
-            <input 
-                type="password" 
-                placeholder="Password..." 
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+            <input  // Jelszó input mező
+                type="password"  
+                placeholder="Password..."  
+                value={password} // Érték a password állapotból
+                onChange={(e) => setPassword(e.target.value)} // onChange eseménykezelő a jelszó frissítéséhez
             />
-            <button type="submit" className="auth-submit">
+            <button type="submit" className="auth-submit"> 
                 Regisztráció
             </button>
         </form>

@@ -9,13 +9,12 @@ const app = express();
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors(settings.SV_CORS));
+
 app.use((error, req, res, next) =>
 {
     debug.error(`Unhandled error: ${error}!`);
     res.status(500).json({ error: true, message: "Internal server error!" });
 });
-
-
 
 app.listen(settings.SV_PORT, settings.SV_HOST, (error) =>
 {
@@ -57,15 +56,11 @@ function validateEmailAddress(emailAddress)
     {
         return "Email address is empty!";
     }
-
-
     // Check email length //
     if (emailAddress.length > 320)
     {
         return "Email address is too long!";
     }
-
-
     // Check email format //
     const emailAddressRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -73,8 +68,6 @@ function validateEmailAddress(emailAddress)
     {
         return "Invalid email address!";
     }
-
-
     // Check if email address is already in use //
     let query = "SELECT * FROM users WHERE email_address = ?"
 
@@ -92,8 +85,6 @@ function validateEmailAddress(emailAddress)
             return "Email address is already in use!";
         }
     });
-
-
     // All checks passed //
     return "";
 }
@@ -257,8 +248,6 @@ app.post("/register", (req, res) =>
 {
     // Request values //
     const { emailAddress, phoneNumber, birthDate, username, password } = req.body;
-
-
     // Validate values //
     let validEmailAddress = validateEmailAddress(emailAddress);    
     if (validEmailAddress != "")
